@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+{%- if page.title -%}
+<h1 class="page-heading-post">{{ page.title }}</h1>
+{%- endif -%}
+<time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+  {%- if page.unpublished == false -%}
+  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+  {{ page.date | date: date_format }}
+  {%- else -%}
+  {{ "unpublished" }}
+  {%- endif -%}
+</time>
+<hr>
+
+{%- if page.unpublished -%}
+<style type="text/css" media="screen">
+  .container {
+    margin: 10px auto;
+    max-width: 600px;
+    text-align: center;
+  }
+  .bigtitle {
+    margin: 30px 0;
+    font-size: 4em;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+</style>
+
+<div class="container">
+  <h1 class="bigtitle">Sorry!</h1>
+
+  {%- if page.date and page.archived == false -%}
+    <p><strong>This post has not been published yet :(</strong></p>
+    <p>Try again later.</p>
+
+    <p>This post will be published on <span>
+      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      {{ page.date | date: date_format }}</span>
+    </p>
+  {%- else if site.archived -%}
+    <p><strong>This post has been archived :(</strong></p>
+  {%- else -%}
+    <p><strong>This post has not been published :(</strong></p>
+    <p>May be an error!</p>
+  {%- endif -%}
+</div>
+{%- else -%}
+  {{ content }}
+{%- endif -%}

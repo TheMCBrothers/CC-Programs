@@ -1,0 +1,9 @@
+<head>
+    {% capture title %}{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}{% endcapture %}
+
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ site.description }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href='{{ "/assets/img/favicon.png" | relative_url }}' type="image/png" rel="shortcut icon">
+    <link href="{{ "/assets/css/style.css" | relative_url }}" rel="stylesheet">
+</head>

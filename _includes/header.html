@@ -1,0 +1,13 @@
+<div class="header-image">
+    <div class="header-logo"></div>
+</div>
+<nav class="nav-2">
+    <ul>
+        <li><a href='{{ "/" | relative_url }}'>{{ site.title | escape }}</a></li>
+        {%- for my_page in site.pages -%}
+        {%- if my_page.title and my_page.in_nav -%}
+        <li><a class="{% if page.url contains my_page.url %}active{% endif %}" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></li>
+        {%- endif -%}
+        {%- endfor -%}
+    </ul>
+</nav>
